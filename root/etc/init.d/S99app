@@ -1,0 +1,17 @@
+#!/bin/sh
+
+echo "Start User Init ...!"
+
+ulimit -s 1024
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/mylib/
+
+cd /ko && ./load3518e_andy -i -sensor ov9712
+
+ls /dev/ | grep ttyUSB
+if [ "$?" == "0" ]; then
+	#/usr/sbin/pppd call huawei-dial > /dev/null 2>&1 &
+fi
+
+/rtsp > /dev/null 2>&1 &
+

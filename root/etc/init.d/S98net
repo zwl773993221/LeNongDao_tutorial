@@ -1,0 +1,15 @@
+#!/bin/sh
+
+#!/bin/sh
+
+cd /mylib && ./load_ap.sh
+
+ifconfig lo up
+ifconfig eth0 up
+ifconfig eth0 192.168.8.111 netmask 255.255.255.0
+route add default gw 192.168.8.1
+
+ifconfig ra0 192.168.10.1
+
+udhcpd /etc/udhcpd.conf
+telnetd &

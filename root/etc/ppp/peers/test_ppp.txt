@@ -1,0 +1,61 @@
+#/etc/ppp/peers/file_name
+
+# Usage: root> pppd call file_name
+
+# 调试时隐藏密码
+hide-password
+
+# 该手机不需要身份验证
+noauth
+
+#############################################
+# 注意: 这里要知道chat安装的位置, 如果不在环境变量
+# 里面, 则要指定位置(如 /usr/sbin/chat -s -v -f)
+#############################################
+# 用于呼叫控制脚本
+connect 'chat -s -v -f /etc/ppp/peers/myppp-chat-connect'
+
+# 断开连接脚本
+disconnect 'chat -s -v -f /etc/ppp/peers/myppp-chat-disconnect'
+
+# 调试信息
+debug
+
+# 模块串口设备
+/dev/ttyUSB3
+
+# 串口波特率
+115200
+
+# 使用默认路由
+defaultroute 
+
+# 不能指定默认IP
+noipdefault 
+
+# No ppp compression 
+novj 
+novjccomp 
+noccp 
+ipcp-accept-local 
+ipcp-accept-remote 
+local 
+
+# 最好锁定串行总线
+lock
+dump
+
+nodetach
+# Keep pppd attached to the terminal 
+
+# 用户名 密码
+# user root
+# password
+
+# 硬件控制流
+crtscts
+remotename 3gppp
+ipparam 3gppp
+
+# 向对方请求最多2个DNS服务器地址
+usepeerdns
