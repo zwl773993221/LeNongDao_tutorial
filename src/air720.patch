@@ -1,0 +1,54 @@
+commit e8e07dc2f0b7ae148c1790bc110daf41c2a1770e
+Author: lzh <lzh@lzh.com>
+Date:   Tue Dec 3 04:30:03 2019 -0800
+
+    add air720
+
+diff --git a/drivers/usb/serial/option.c b/drivers/usb/serial/option.c
+index 5576c84..b44c560 100644
+--- a/drivers/usb/serial/option.c
++++ b/drivers/usb/serial/option.c
+@@ -546,6 +546,9 @@ static const struct option_blacklist_info telit_le920_blacklist = {
+ };
+ 
+ static const struct usb_device_id option_ids[] = {
++	//+add for Air72x
++	{ USB_DEVICE(0x1286, 0x4e3d) },
++	//-add for Air72x
+ 	{ USB_DEVICE(OPTION_VENDOR_ID, OPTION_PRODUCT_COLT) },
+ 	{ USB_DEVICE(OPTION_VENDOR_ID, OPTION_PRODUCT_RICOLA) },
+ 	{ USB_DEVICE(OPTION_VENDOR_ID, OPTION_PRODUCT_RICOLA_LIGHT) },
+@@ -1716,6 +1719,9 @@ static struct usb_serial_driver option_1port_device = {
+ #ifdef CONFIG_PM
+ 	.suspend           = usb_wwan_suspend,
+ 	.resume            = usb_wwan_resume,
++	//+add for Air720
++	// .reset_resume      = usb_wwan_resume,
++	//-add for Air720
+ #endif
+ };
+ 
+@@ -1755,6 +1761,9 @@ static int option_probe(struct usb_serial *serial,
+ 			const struct usb_device_id *id)
+ {
+ 	struct usb_wwan_intf_private *data;
++	struct usb_interface_descriptor *iface_desc =
++		&serial->interface->cur_altsetting->desc;
++	struct usb_device_descriptor *dev_desc = &serial->dev->descriptor;
+ 
+ 	/* D-Link DWM 652 still exposes CD-Rom emulation interface in modem mode */
+ 	if (serial->dev->descriptor.idVendor == DLINK_VENDOR_ID &&
+@@ -1768,6 +1777,13 @@ static int option_probe(struct usb_serial *serial,
+ 		serial->interface->cur_altsetting->desc.bInterfaceClass != 0xff)
+ 		return -ENODEV;
+ 
++	//+add for Air72x 
++	if (dev_desc->idVendor == cpu_to_le16(0x1286) &&
++		dev_desc->idProduct == cpu_to_le16(0x4e3d) &&
++		iface_desc->bInterfaceNumber <= 1)
++		return -ENODEV;
++	//-add for Air72x
++
+ 	/* Don't bind reserved interfaces (like network ones) which often have
+ 	 * the same class/subclass/protocol as the serial interfaces.  Look at
+ 	 * the Windows driver .INF files for reserved interface numbers.
