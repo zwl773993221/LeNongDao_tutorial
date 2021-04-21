@@ -1,0 +1,8 @@
+LzmaDecode.o: LzmaDecode.c /usr/include/stdc-predef.h LzmaDecode.h \
+ /usr/lib/gcc/i686-linux-gnu/5/include/stddef.h
+
+/usr/include/stdc-predef.h:
+
+LzmaDecode.h:
+
+/usr/lib/gcc/i686-linux-gnu/5/include/stddef.h:

@@ -1,0 +1,6 @@
+asm/i386/src_gas/lzo1f_f1.lo: asm/i386/src_gas/lzo1f_f1.S \
+ /usr/include/stdc-predef.h asm/i386/src_gas/asminit.def
+
+/usr/include/stdc-predef.h:
+
+asm/i386/src_gas/asminit.def:

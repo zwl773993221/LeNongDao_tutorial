@@ -1,0 +1,161 @@
+--------------------
+./configure --prefix=/new/Hi3518E/Hi3518E_SDK_V1.0.3.0/Hi3518E_SDK_V1.0.3.0/osdrv/tools/pc/squashfs4.2/tmp --static
+Sat Nov 16 18:52:35 PST 2019
+
+Checking for gcc...
+=== ztest3588.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+gcc -c -O3 ztest3588.c
+... using gcc
+
+Building static library libz.a version 1.2.7 with gcc.
+
+
+=== ztest3588.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest3588.c
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest3588.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+gcc -O3 -D_LARGEFILE64_SOURCE=1 -o ztest3588 ztest3588.c
+Checking for strerror... Yes.
+
+=== ztest3588.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest3588.c
+Checking for unistd.h... Yes.
+
+=== ztest3588.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest3588.c
+Checking for stdarg.h... Yes.
+
+=== ztest3588.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest3588.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest3588.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+gcc -O3 -D_LARGEFILE64_SOURCE=1 -o ztest3588 ztest3588.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest3588.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest3588.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest3588.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest3588.c
+Checking for attribute(visibility) support... Yes.
+
+=== ztest3588.c ===
+#include <stdio.h>
+#define is32(n,t) for(n=1,k=0;n;n<<=1,k++);if(k==32){puts(t);return 0;}
+int main() {
+    int k;
+    unsigned i;
+    unsigned long l;
+    unsigned short s;
+    is32(i, "unsigned")
+    is32(l, "unsigned long")
+    is32(s, "unsigned short")
+    return 1;
+}
+===
+gcc -O3 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN ztest3588.c -o ztest3588
+Looking for a four-byte integer type... Found.
+
+ALL = static all64
+AR = ar
+ARFLAGS = rc
+CC = gcc
+CFLAGS = -O3 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+CPP = gcc -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = gcc
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ranlib
+SFLAGS = -O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+SHAREDLIB =
+SHAREDLIBM =
+SHAREDLIBV =
+STATICLIB = libz.a
+TEST = all teststatic test64
+VER = 1.2.7
+Z_U4 = unsigned
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /new/Hi3518E/Hi3518E_SDK_V1.0.3.0/Hi3518E_SDK_V1.0.3.0/osdrv/tools/pc/squashfs4.2/tmp
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+

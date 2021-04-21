@@ -1,0 +1,21 @@
+/dev/ttyUSB1
+115200
+crtscts
+modem
+debug
+nodetach
+usepeerdns
+noipdefault
+defaultroute
+0.0.0.0:0.0.0.0
+user "card"
+password "card"
+noauth
+
+-mschap
+-mschap-v2
+ipcp-accept-local
+ipcp-accept-remote
+connect '/usr/sbin/chat -s -v -f /etc/ppp/huawei-chat'
+disconnect '/usr/sbin/chat -s -v -f /etc/ppp/huawei-chat-disconnect'
+	

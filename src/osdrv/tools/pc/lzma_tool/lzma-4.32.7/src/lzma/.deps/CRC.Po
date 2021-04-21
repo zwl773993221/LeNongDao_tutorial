@@ -1,0 +1,40 @@
+CRC.o: ../../src/sdk/Common/CRC.cpp /usr/include/stdc-predef.h \
+ ../../src/sdk/Common/StdAfx.h ../../src/sdk/Common/CRC.h \
+ /usr/lib/gcc/i686-linux-gnu/5/include/stddef.h \
+ ../../src/sdk/Common/Types.h ../../config.h /usr/include/inttypes.h \
+ /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+ /usr/include/i386-linux-gnu/bits/wordsize.h \
+ /usr/include/i386-linux-gnu/gnu/stubs.h \
+ /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+ /usr/lib/gcc/i686-linux-gnu/5/include/stdint.h /usr/include/stdint.h \
+ /usr/include/i386-linux-gnu/bits/wchar.h
+
+/usr/include/stdc-predef.h:
+
+../../src/sdk/Common/StdAfx.h:
+
+../../src/sdk/Common/CRC.h:
+
+/usr/lib/gcc/i686-linux-gnu/5/include/stddef.h:
+
+../../src/sdk/Common/Types.h:
+
+../../config.h:
+
+/usr/include/inttypes.h:
+
+/usr/include/features.h:
+
+/usr/include/i386-linux-gnu/sys/cdefs.h:
+
+/usr/include/i386-linux-gnu/bits/wordsize.h:
+
+/usr/include/i386-linux-gnu/gnu/stubs.h:
+
+/usr/include/i386-linux-gnu/gnu/stubs-32.h:
+
+/usr/lib/gcc/i686-linux-gnu/5/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/i386-linux-gnu/bits/wchar.h:
