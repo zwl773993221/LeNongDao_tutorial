@@ -189,12 +189,12 @@ hirootfs_prepare: prepare
 ##########################################################################################
 hibusybox: prepare
 	@echo "---------task [4] build busybox "
-	#rm $(OSDRV_DIR)/opensource/busybox/$(BUSYBOX_VER) -rf
-	#tar xzf $(OSDRV_DIR)/opensource/busybox/$(BUSYBOX_VER).tgz -C $(OSDRV_DIR)/opensource/busybox
-	#find $(OSDRV_DIR)/opensource/busybox/$(BUSYBOX_VER) | xargs touch
-	#cp $(OSDRV_DIR)/opensource/busybox/$(BUSYBOX_VER)/$(BUSYBOX_CFG) \
+	rm $(OSDRV_DIR)/opensource/busybox/$(BUSYBOX_VER) -rf
+	tar xzf $(OSDRV_DIR)/opensource/busybox/$(BUSYBOX_VER).tgz -C $(OSDRV_DIR)/opensource/busybox
+	find $(OSDRV_DIR)/opensource/busybox/$(BUSYBOX_VER) | xargs touch
+	cp $(OSDRV_DIR)/opensource/busybox/$(BUSYBOX_VER)/$(BUSYBOX_CFG) \
 		$(OSDRV_DIR)/opensource/busybox/$(BUSYBOX_VER)/.config
-	#pushd $(OSDRV_DIR)/opensource/busybox/$(BUSYBOX_VER)/;make -j 20 >/dev/null;popd
+	pushd $(OSDRV_DIR)/opensource/busybox/$(BUSYBOX_VER)/;make -j 20 >/dev/null;popd
 	make -C $(OSDRV_DIR)/opensource/busybox/$(BUSYBOX_VER) install
 	cp -af $(OSDRV_DIR)/opensource/busybox/$(BUSYBOX_VER)/_install/* $(OSDRV_DIR)/pub/$(PUB_ROOTFS)
 
