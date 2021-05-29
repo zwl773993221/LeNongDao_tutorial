@@ -67,7 +67,7 @@ extern "C" {
  * @brief SHT3x I2C 7-bit address option
  */
 typedef enum _sht3x_i2c_addr {
-    SHT3X_I2C_ADDR_DFLT = 0x44,
+    SHT3X_I2C_ADDR_DFLT = 0x88,
     SHT3X_I2C_ADDR_ALT = 0x45
 } sht3x_i2c_addr_t;
 

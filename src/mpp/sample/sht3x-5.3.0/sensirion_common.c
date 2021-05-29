@@ -125,7 +125,10 @@ int16_t sensirion_i2c_read_words_as_bytes(uint8_t address, uint8_t* data,
         ret = sensirion_common_check_crc(&buf8[i], SENSIRION_WORD_SIZE,
                                          buf8[i + SENSIRION_WORD_SIZE]);
         if (ret != NO_ERROR)
-            return ret;
+        {
+             printf("sensirion_common_check_crc, ret:%d\n",ret);
+            //return ret;
+        }
 
         data[j++] = buf8[i];
         data[j++] = buf8[i + 1];

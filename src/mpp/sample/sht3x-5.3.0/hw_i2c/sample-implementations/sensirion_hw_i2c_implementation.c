@@ -41,14 +41,13 @@
  * Linux specific configuration. Adjust the following define to the device path
  * of your sensor.
  */
-#define I2C_DEVICE_PATH "/dev/i2c-1"
+#define I2C_DEVICE_PATH "/dev/i2c-2"
 
 /**
  * The following define was taken from i2c-dev.h. Alternatively the header file
  * can be included. The define was added in Linux v3.10 and never changed since
  * then.
  */
-#define I2C_SLAVE 0x0703
 
 #define I2C_WRITE_FAILED -1
 #define I2C_READ_FAILED -1
